@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootHome"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/rootHome"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@color/colorPrimary">
 
     <include
-        android:id="@+id/toolbarHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/toolbar_home"/>
+            android:id="@+id/toolbarHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/toolbar_home"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeCrypto"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarHome">
-
-        <view class="androidx.appcompat.app.AlertController$RecycleListView"
-            android:id="@+id/rvCrypto"
+            android:id="@+id/swipeCrypto"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:overScrollMode="ifContentScrolls"
-            android:scrollbars="vertical"
-            android:verticalScrollbarPosition="right"
-            tools:listItem="@layout/coin_item"/>
+            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarHome">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCrypto"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:overScrollMode="ifContentScrolls"
+                android:scrollbars="vertical"
+                android:verticalScrollbarPosition="right"
+                tools:listItem="@layout/coin_item"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

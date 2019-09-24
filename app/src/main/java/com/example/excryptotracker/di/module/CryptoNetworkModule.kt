@@ -1,6 +1,7 @@
 package com.example.excryptotracker.di.module
 
 import android.content.Context
+import com.example.excryptotracker.R
 import com.example.excryptotracker.extensions.clas
 import com.example.excryptotracker.network.CryptoNetWorkService
 import com.example.excryptotracker.network.NetWorkUtils
@@ -94,7 +95,7 @@ class CryptoNetworkModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
-            .baseUrl("https://coinmarketcap.com")
+            .baseUrl(context.getString(R.string.server_url))
             .build()
     }
 

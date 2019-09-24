@@ -11,6 +11,13 @@ class DelegatedPreferences<T>(val context: Context, val key: String, val default
         context.getSharedPreferences(R.string.app_name.toString(), Context.MODE_PRIVATE)
     }
 
+    operator fun getValue(thisRef: Any?, property: KProperty<*>): T {
+        return findPreferences(key, defaultValue)
+    }
+
+    operator fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
+        savePreference(key, value)
+    }
 
     private fun findPreferences(key: String, defaultValue: T): T {
         with(prefs) {
@@ -26,7 +33,7 @@ class DelegatedPreferences<T>(val context: Context, val key: String, val default
         }
     }
 
-    private fun savePreserence(key: String, value: T) {
+    private fun savePreference(key: String, value: T) {
         with(prefs.edit()) {
             when (value) {
                 is Boolean -> putBoolean(key, value)
@@ -39,7 +46,7 @@ class DelegatedPreferences<T>(val context: Context, val key: String, val default
         }
     }
 
-    object PrefKey{
+    object PrefKey {
         val AUTO_UPDATE_STATUS = "AUTO_UPDATE_STATUS"
         val AUTO_UPDATE_DURATION = "AUTO_UPDATE_DURATION"
     }
